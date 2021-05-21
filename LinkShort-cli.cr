@@ -39,9 +39,9 @@ OptionParser.parse do |parser|
         end
     end
 
-    parser.on "-sh", "--show", "Show the attributes of the currently selected shortcut" do
+    parser.on "-?", "--show", "Show the attributes of the currently selected shortcut" do
         if linker.empty?
-            puts "Please use -sh after you created or loaded a shortcut".colorize(:red)
+            puts "Please use -? after you created or loaded a shortcut".colorize(:red)
         else
             puts linker.to_pretty_s
         end
