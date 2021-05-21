@@ -1,5 +1,6 @@
 require "option_parser"
 require "./Linker"
+require "colorize"
 
 version = 0.1
 linker = Linker.new
@@ -21,4 +22,13 @@ OptionParser.parse do |parser|
         puts "Short: #{linker.short(link)}"
         puts "Link: #{linker.url}/#{linker.short}"
     end
+
+    parser.on "-s", "--save", "Save the current/selected shortcut/link/token" do
+        if linker.empty?
+            puts "No shortcut selected".colorize(:red) 
+        else
+            linker.save
+        end
+    end
+
 end

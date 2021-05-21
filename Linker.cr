@@ -29,6 +29,25 @@ class Linker
         @short
     end
     
+    def save
+        data = {
+            "link" => @link,
+            "token" => @token
+        }.to_json
+        begin
+            file_content = JSON.parse(File.read("./shorts.json")).as_h
+        rescue
+            File.write("./shorts.json", "{}")
+            file_content = JSON.parse(File.read("./shorts.json")).as_h
+        end
+        file_content[@short] = JSON::Any.new(data)
+        File.write("./shorts.json", file_content.to_pretty_json)
+    end
+
+    def empty?
+        @link.empty? && @short.empty? && @token.empty?
+    end
+
     def url
         @url
     end
