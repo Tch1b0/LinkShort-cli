@@ -2,7 +2,7 @@ require "option_parser"
 require "./Linker"
 require "colorize"
 
-version = 0.1
+version = 0.2
 linker = Linker.new
 
 OptionParser.parse do |parser|
@@ -47,4 +47,9 @@ OptionParser.parse do |parser|
         end
     end
 
+    parser.invalid_option do |op|
+        STDERR.print "Error: ".colorize(:red)
+        STDERR.puts "Invalid option: #{op}"
+        exit(1)
+    end
 end
