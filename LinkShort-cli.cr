@@ -19,7 +19,7 @@ OptionParser.parse do |parser|
     end
 
     parser.on "-c LINK", "--create=LINK", "Create a new shortcut" do |link|
-        puts "Short: #{linker.short(link)}"
+        puts "Short: #{linker.create(link)}"
         puts "Link: #{linker.url}/#{linker.short}"
     end
 
@@ -28,6 +28,22 @@ OptionParser.parse do |parser|
             puts "No shortcut selected".colorize(:red) 
         else
             linker.save
+        end
+    end
+
+    parser.on "-l SHORTCUT", "--load=SHORTCUT", "Load a link and its token by a shortcut" do |shortcut|
+        unless linker.load(shortcut)
+            print "The shortcut ".colorize(:red) 
+            print shortcut.colorize(:blue) 
+            puts " wasn't found".colorize(:red)
+        end
+    end
+
+    parser.on "-sh", "--show", "Show the attributes of the currently selected shortcut" do
+        if linker.empty?
+            puts "Please use -sh after you created or loaded a shortcut".colorize(:red)
+        else
+            puts linker.to_pretty_s
         end
     end
 
