@@ -11,10 +11,10 @@ Short: 17a76043
 Link: https://ls.johannespour.de/17a76043
 ```
 
-## Tags
+## Flags
 
 * `-h` or `--help`
-<br>Show all tags
+<br>Show all flags available
 
 * `-c LINK` or `--create=LINK`
 <br>Create a shortcut for the link
