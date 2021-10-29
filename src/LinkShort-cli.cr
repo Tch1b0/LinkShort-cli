@@ -1,9 +1,9 @@
 require "option_parser"
 require "./Linker"
-require "./Utility"
 require "colorize"
 
-version = {{parse_version}}
+# Version needs to be updated manually at the moment
+version = 0.2
 
 linker = Linker.new
 

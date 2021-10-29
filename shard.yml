@@ -1,15 +1,10 @@
 name: LinkShort-cli
-version: 0.1.0
+version: 0.2.0
 
 authors:
   - Tch1b0 <jpour3006@gmail.com>
 
 description: |
   A cli for the LinkShort API
-
-# dependencies:
-#   pg:
-#     github: will/crystal-pg
-#     version: "~> 0.5"
 
 license: MIT

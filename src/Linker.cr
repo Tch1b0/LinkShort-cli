@@ -4,20 +4,21 @@ require "json"
 require "colorize"
 
 class Linker
-    @link = ""
-    @short = ""
-    @token = ""
-    @url = "https://ls.johannespour.de"
+    @link : String = ""
+    @short : String = ""
+    @token : String = ""
+    @url : String = "https://ls.johannespour.de"
 
-    def to_s
+    def to_s : String
         "<short: #{@short}, link: #{@link}, token: #{@token}>"
     end
 
-    def to_pretty_s
-        "Short: #{@short}\nLink: #{@link}\nToken: #{@token}".colorize(:blue)
+    # Returns a formatted version of this object (including the token) 
+    def to_pretty_s : Colorize::Object(String)
+        "Short: #{@short}\nLink: #{@link}#{("\nToken: "+@token) if original?}".colorize(:blue)
     end
 
-    def create(link)
+    def create(link) : Bool|String
         body = {
             "link": link
         }
@@ -32,7 +33,7 @@ class Linker
         begin
             @token = body["token"].to_s
         rescue
-            puts "Tokens are currently unavailable on the LinkShort server.".colorize(:red)
+            # Here: Token is an empty string
         end
         @short
     end
@@ -54,7 +55,7 @@ class Linker
         File.write("./shorts.json", file_content.to_pretty_json)
     end
 
-    def load(shortcut)
+    def load(shortcut) : Bool
         begin
             file_content = JSON.parse(File.read("./shorts.json"))
             info = file_content[shortcut]
@@ -69,19 +70,23 @@ class Linker
         true
     end
 
-    def empty?
+    def original? : Bool
+        @token.size > 0
+    end
+
+    def empty? : Bool
         @link.empty? && @short.empty? && @token.empty?
     end
 
-    def url
+    def url : String
         @url
     end
 
-    def short
+    def short : String
         @short
     end
 
-    def link
+    def link : String
         @link
     end
 end
