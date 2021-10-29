@@ -3,7 +3,7 @@ require "./Linker"
 require "colorize"
 
 # Version needs to be updated manually at the moment
-version = 0.2
+version = "1.0.0"
 
 linker = Linker.new
 
