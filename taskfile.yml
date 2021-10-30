@@ -4,3 +4,6 @@ tasks:
   build:
     cmds: 
       - crystal build ./src/main.cr -o build/LinkShort-cli{{exeExt}}
+  build-release:
+    cmds:
+      - crystal build ./src/main.cr -o build/LinkShort-cli{{exeExt}} --release
