@@ -1,8 +1,13 @@
 name: LinkShort-cli
-version: 1.0.0
+version: 1.0.1
 
 authors:
   - Tch1b0 <jpour3006@gmail.com>
+
+dependencies:
+  linkshort:
+    github: Tch1b0/LinkShort.cr
+    branch: master
 
 description: |
   A cli for the LinkShort API

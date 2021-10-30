@@ -1,3 +1,5 @@
 LinkShort-cli
 shorts.json
 build
+shard.lock
+lib
