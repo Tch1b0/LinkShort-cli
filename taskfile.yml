@@ -3,4 +3,4 @@ version: "3"
 tasks:
   build:
     cmds: 
-      - crystal build ./src/LinkShort-cli.cr -o build/LinkShort-cli{{exeExt}}
+      - crystal build ./src/main.cr -o build/LinkShort-cli{{exeExt}}
